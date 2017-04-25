@@ -5,6 +5,10 @@ import {
   Text,
   View
 } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, combineReduxers, compose} from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
 
 export default class Tab extends Component {
   render() {
