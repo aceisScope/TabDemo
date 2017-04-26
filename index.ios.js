@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry } from 'react-native';
+import { AppRegistry, Navigator } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReduxers, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';
@@ -24,7 +24,15 @@ const store = configureStore({});
 
 const App = () => (
   <Provider store = {store}>
-    <MainContainer/>
+    <Navigator
+      initialRoute={{ component: MainContainer }}
+      configureScene={(route, routeStack) => {
+          return Navigator.SceneConfigs.FloatFromRight;
+      }}
+      renderScene={(route, navigator) => {
+        let Component = route.component;
+          return <Component {...route.params} navigator={navigator} />
+      }} />
   </Provider>
 );
 
