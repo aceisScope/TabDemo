@@ -8,23 +8,31 @@ import TabNavigator from 'react-native-tab-navigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 class MainContainer extends Component {
+  constructor(props) {
+      super(props);
+
+      this.state = {
+          selectedTab: 'home'
+      };
+  }
+
   render(){
     return (
       <TabNavigator>
         <TabNavigator.Item
-          selected={{}}
+          selected={this.state.selectedTab === 'home'}
           title="Home"
           renderIcon={() => <Icon name={ 'ios-home' } size={30} color={'gray'}/>}
           renderSelectedIcon={() => <Icon name={ 'ios-home' } size={30} color={'#4E78E7'}/>}
-          onPress={() => {}}>
+          onPress={() => this.setState({ selectedTab: 'home' })}>
           {<View></View>}
         </TabNavigator.Item>
         <TabNavigator.Item
-          selected={{}}
+          selected={this.state.selectedTab === 'more'}
           title="More"
           renderIcon={() => <Icon name={ 'ios-more' } size={30} color={'gray'}/>}
           renderSelectedIcon={() => <Icon name={ 'ios-more' } size={30} color={'#4E78E7'}/>}
-          onPress={() => {}}>
+          onPress={() => this.setState({ selectedTab: 'more' })}>
           {<View></View>}
         </TabNavigator.Item>
       </TabNavigator>
