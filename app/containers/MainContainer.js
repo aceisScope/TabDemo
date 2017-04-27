@@ -16,7 +16,17 @@ class MainContainer extends Component {
       };
   }
 
+  switchTabs(tab) {
+    this.setState({ selectedTab: tab })
+    this.props.switchTabs(tab);
+  }
+
+  currentTab() {
+    return this.props.currentTab;
+  }
+
   render(){
+    console.log(this.currentTab());
     return (
       <TabNavigator>
         <TabNavigator.Item
@@ -24,7 +34,7 @@ class MainContainer extends Component {
           title="Home"
           renderIcon={() => <Icon name={ 'ios-home' } size={30} color={'gray'}/>}
           renderSelectedIcon={() => <Icon name={ 'ios-home' } size={30} color={'#4E78E7'}/>}
-          onPress={() => this.setState({ selectedTab: 'home' })}>
+          onPress={() => this.switchTabs('home') }>
           {<View></View>}
         </TabNavigator.Item>
         <TabNavigator.Item
@@ -32,7 +42,7 @@ class MainContainer extends Component {
           title="More"
           renderIcon={() => <Icon name={ 'ios-more' } size={30} color={'gray'}/>}
           renderSelectedIcon={() => <Icon name={ 'ios-more' } size={30} color={'#4E78E7'}/>}
-          onPress={() => this.setState({ selectedTab: 'more' })}>
+          onPress={() => this.switchTabs('more')}>
           {<View></View>}
         </TabNavigator.Item>
       </TabNavigator>
@@ -45,6 +55,11 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(ActionCreators, dispatch);
 }
 
-export default connect((state) => {
-  return {}
-}, mapDispatchToProps)(MainContainer);
+// match state with props
+function mapStateToProps(state) {
+  return {
+    currentTab: state.switchTabs
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
