@@ -26,11 +26,11 @@ class MainContainer extends Component {
   }
 
   render(){
-    console.log(this.currentTab());
+    const { currentTab } = this.props;
     return (
       <TabNavigator>
         <TabNavigator.Item
-          selected={this.state.selectedTab === 'home'}
+          selected={currentTab === 'home'}
           title="Home"
           renderIcon={() => <Icon name={ 'ios-home' } size={30} color={'gray'}/>}
           renderSelectedIcon={() => <Icon name={ 'ios-home' } size={30} color={'#4E78E7'}/>}
@@ -38,7 +38,7 @@ class MainContainer extends Component {
           {<View></View>}
         </TabNavigator.Item>
         <TabNavigator.Item
-          selected={this.state.selectedTab === 'more'}
+          selected={currentTab === 'more'}
           title="More"
           renderIcon={() => <Icon name={ 'ios-more' } size={30} color={'gray'}/>}
           renderSelectedIcon={() => <Icon name={ 'ios-more' } size={30} color={'#4E78E7'}/>}
