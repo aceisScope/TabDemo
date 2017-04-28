@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, Navigator } from 'react-native';
+import { AppRegistry, Navigator, StyleSheet, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReduxers, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';
@@ -35,5 +35,15 @@ const App = () => (
       }} />
   </Provider>
 );
+
+const styles = StyleSheet.create({
+  navigator: {
+    paddingTop: 42,
+    paddingBottom:0,
+  },
+  navbar: {
+    backgroundColor: 'grey',
+  }
+});
 
 AppRegistry.registerComponent('Tab', () => App);

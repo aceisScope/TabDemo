@@ -7,6 +7,8 @@ import { ActionCreators } from '../actions';
 import TabNavigator from 'react-native-tab-navigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import Home from './Home';
+
 class MainContainer extends Component {
   constructor(props) {
       super(props);
@@ -35,7 +37,7 @@ class MainContainer extends Component {
           renderIcon={() => <Icon name={ 'ios-home' } size={30} color={'gray'}/>}
           renderSelectedIcon={() => <Icon name={ 'ios-home' } size={30} color={'#4E78E7'}/>}
           onPress={() => this.switchTabs('home') }>
-          {<View></View>}
+          <Home/>
         </TabNavigator.Item>
         <TabNavigator.Item
           selected={currentTab === 'more'}
